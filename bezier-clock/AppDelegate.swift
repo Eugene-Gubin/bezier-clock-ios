@@ -15,7 +15,8 @@ import UIKit
 // иначе будут ошибки компиляции при попытке использовать swift-классы из Obj-C
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+    var window: UIWindow?
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         application.idleTimerDisabled = true
         
         return true

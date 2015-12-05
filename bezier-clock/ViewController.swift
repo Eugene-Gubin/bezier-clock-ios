@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         
         // sort views
         // вместо NSPredicate используем trailing closures
-        digitViews.sort { $0.tag < $1.tag }
+        digitViews.sortInPlace { $0.tag < $1.tag }
         
         // update loop
         clockUpdate(false)
@@ -41,10 +41,8 @@ class ViewController: UIViewController {
         // ссылается на замыкание, а замыкание ссылается на него
         [weak self] (animated: Bool) in
         
-        let units =
-            NSCalendarUnit.HourCalendarUnit |
-            NSCalendarUnit.MinuteCalendarUnit |
-            NSCalendarUnit.SecondCalendarUnit
+        let units: NSCalendarUnit =
+            [NSCalendarUnit.NSHourCalendarUnit, NSCalendarUnit.NSMinuteCalendarUnit, NSCalendarUnit.NSSecondCalendarUnit]
         let date = NSDate(timeIntervalSinceNow: 1.0)
         let components = NSCalendar.currentCalendar().components(units, fromDate: date)
         
