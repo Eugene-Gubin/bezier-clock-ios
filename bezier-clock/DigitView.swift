@@ -34,7 +34,7 @@ public class DigitView: UIView {
         // объявление в духе популярных языков,
         // но есть ещё willSet, didSet для наблюдения
         get {
-            return UIColor(CGColor: shapeLayer.strokeColor)
+            return UIColor(CGColor: shapeLayer.strokeColor!)
         }
         set {
             shapeLayer.strokeColor = newValue.CGColor
@@ -70,7 +70,7 @@ public class DigitView: UIView {
     }
     
     var shapeLayer: CAShapeLayer {
-        return self.layer as CAShapeLayer
+        return self.layer as! CAShapeLayer
     }
     
     override public init(frame: CGRect) {
@@ -79,7 +79,7 @@ public class DigitView: UIView {
     }
 
     // обязательный инициализатор: такой инициализатор должен иметь каждый наследник
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         internalInit()
     }
@@ -133,11 +133,11 @@ public class DigitView: UIView {
             
             animation.duration       = DigitView.animationDuration
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-            animation.fromValue      = shapeLayer.valueForKeyPath(animation.keyPath)
+            animation.fromValue      = shapeLayer.valueForKeyPath(animation.keyPath!)
             animation.toValue        = path.CGPath
             
             shapeLayer.addAnimation(animation, forKey:"path.animation")
-            shapeLayer.setValue(animation.toValue, forKeyPath:animation.keyPath)
+            shapeLayer.setValue(animation.toValue, forKeyPath:animation.keyPath!)
         } else {
             shapeLayer.path = path.CGPath
         }
