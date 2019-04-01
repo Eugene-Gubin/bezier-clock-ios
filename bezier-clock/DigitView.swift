@@ -34,10 +34,10 @@ public class DigitView: UIView {
         // объявление в духе популярных языков,
         // но есть ещё willSet, didSet для наблюдения
         get {
-            return UIColor(CGColor: shapeLayer.strokeColor!)
+            return UIColor(cgColor: shapeLayer.strokeColor!)
         }
         set {
-            shapeLayer.strokeColor = newValue.CGColor
+            shapeLayer.strokeColor = newValue.cgColor
         }
     }
     
@@ -49,7 +49,7 @@ public class DigitView: UIView {
         }
         set {
             // именованные параметры, вместо селекторов Obj-C
-            setDigit(newValue, animated: false)
+            setDigit(value: newValue, animated: false)
         }
     }
     
@@ -85,19 +85,19 @@ public class DigitView: UIView {
     }
     
     func internalInit() {
-        shapeLayer.fillColor   = UIColor.clearColor().CGColor;
-        shapeLayer.strokeColor = UIColor.blackColor().CGColor;
+        shapeLayer.fillColor   = UIColor.clear.cgColor;
+        shapeLayer.strokeColor = UIColor.black.cgColor;
         shapeLayer.lineWidth   = 2.0;
-        shapeLayer.lineCap     = kCALineCapRound;
-        shapeLayer.lineJoin    = kCALineJoinRound;
+        shapeLayer.lineCap     = CAShapeLayerLineCap.round;
+        shapeLayer.lineJoin    = CAShapeLayerLineJoin.round;
         
-        setupPathWithDigit(digit, animated: false)
+        setupPathWithDigit(digit: digit, animated: false)
     }
     
     func setDigit(value: uint, animated: Bool) {
         if (_digit != value) {
             _digit = value % 10
-            setupPathWithDigit(_digit, animated: animated)
+            setupPathWithDigit(digit: _digit, animated: animated)
         }
     }
     
@@ -105,15 +105,15 @@ public class DigitView: UIView {
         let data = sc_digitsData[Int(digit)]
         let path = UIBezierPath()
         
-        path.moveToPoint(CGPointMake(data[0], data[1]))
-        
-        for (var index = 0; index < 4; index++) {
+        path.move(to: CGPoint(x: data[0], y: data[1]))
+
+        for index in 0..<4 {
             let baseIndex = 2 + index * 6;
             
-            path.addCurveToPoint(
-                CGPointMake(data[baseIndex + 4], data[baseIndex + 5]),
-                controlPoint1:CGPointMake(data[baseIndex + 0], data[baseIndex + 1]),
-                controlPoint2:CGPointMake(data[baseIndex + 2], data[baseIndex + 3]));
+            path.addCurve(
+                to: CGPoint(x: data[baseIndex + 4], y: data[baseIndex + 5]),
+                controlPoint1:CGPoint(x: data[baseIndex + 0], y: data[baseIndex + 1]),
+                controlPoint2:CGPoint(x: data[baseIndex + 2], y: data[baseIndex + 3]));
         }
         
         let ratioX = self.bounds.size.width  / 500.0
@@ -122,29 +122,30 @@ public class DigitView: UIView {
         let deltaX = (ratioX - ratio) * 500.0 / 2.0
         let deltaY = (ratioY - ratio) * 500.0 / 2.0
         
-        let matrix = CGAffineTransformConcat(
-            CGAffineTransformMakeScale(ratio, ratio),
-            CGAffineTransformMakeTranslation(deltaX, deltaY))
+        let matrix = CGAffineTransform(scaleX: ratio, y: ratio).concatenating(
+            CGAffineTransform(translationX: deltaX, y: deltaY))
         
-        path.applyTransform(matrix)
+        path.apply(matrix)
         
         if (animated) {
             let animation = CABasicAnimation(keyPath: "path")
             
             animation.duration       = DigitView.animationDuration
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-            animation.fromValue      = shapeLayer.valueForKeyPath(animation.keyPath!)
-            animation.toValue        = path.CGPath
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+            animation.fromValue      = shapeLayer.value(forKeyPath: animation.keyPath!)
+            animation.toValue        = path.cgPath
             
-            shapeLayer.addAnimation(animation, forKey:"path.animation")
+            shapeLayer.add(animation, forKey:"path.animation")
             shapeLayer.setValue(animation.toValue, forKeyPath:animation.keyPath!)
         } else {
-            shapeLayer.path = path.CGPath
+            shapeLayer.path = path.cgPath
         }
     }
     
-    override public class func layerClass() -> AnyClass {
-        // метакласс: возвращаем ссылку не на экземляр класса, а на сам класс
-        return CAShapeLayer.self
+    override public class var layerClass: Swift.AnyClass {
+        get {
+            return CAShapeLayer.self
+        }
     }
+
 }

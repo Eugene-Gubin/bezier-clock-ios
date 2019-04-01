@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // setup appearance
-        self.view.backgroundColor = UIColor.blackColor()
+        self.view.backgroundColor = UIColor.black
         
         // и в отличии от NSArray рассылку сообщений (setValue:) он не поддерживает,
         // поэтому используем for-in и долой строковые константы
@@ -27,8 +27,8 @@ class ViewController: UIViewController {
         
         // sort views
         // вместо NSPredicate используем trailing closures
-        digitViews.sortInPlace { $0.tag < $1.tag }
-        
+        digitViews.sort { $0.tag < $1.tag }
+
         // update loop
         clockUpdate(false)
     }
@@ -41,19 +41,18 @@ class ViewController: UIViewController {
         // ссылается на замыкание, а замыкание ссылается на него
         [weak self] (animated: Bool) in
         
-        let units: NSCalendarUnit =
-            [NSCalendarUnit.NSHourCalendarUnit, NSCalendarUnit.NSMinuteCalendarUnit, NSCalendarUnit.NSSecondCalendarUnit]
+        let units = Set<Calendar.Component>([.hour, .year, .minute, .second])
         let date = NSDate(timeIntervalSinceNow: 1.0)
-        let components = NSCalendar.currentCalendar().components(units, fromDate: date)
+        let components = NSCalendar.current.dateComponents(units, from: date as Date)
         
         // optional chaining: если self == null, то метод вызыван не будет
-        self?.digitViews[0].setDigit(uint(components.hour   / 10), animated: animated)
-        self?.digitViews[1].setDigit(uint(components.hour   % 10), animated: animated)
-        self?.digitViews[2].setDigit(uint(components.minute / 10), animated: animated)
-        self?.digitViews[3].setDigit(uint(components.minute % 10), animated: animated)
-        self?.digitViews[4].setDigit(uint(components.second / 10), animated: animated)
-        self?.digitViews[5].setDigit(uint(components.second % 10), animated: animated)
-        
+        self?.digitViews[0].setDigit(value: uint(components.hour! / 10), animated: animated)
+        self?.digitViews[1].setDigit(value: uint(components.hour! % 10), animated: animated)
+        self?.digitViews[2].setDigit(value: uint(components.minute! / 10), animated: animated)
+        self?.digitViews[3].setDigit(value: uint(components.minute! % 10), animated: animated)
+        self?.digitViews[4].setDigit(value: uint(components.second! / 10), animated: animated)
+        self?.digitViews[5].setDigit(value: uint(components.second! % 10), animated: animated)
+
         let time = CFAbsoluteTimeGetCurrent()
         var delta = ceil(time) - time - DigitView.animationDuration
         
@@ -61,16 +60,17 @@ class ViewController: UIViewController {
             delta += 1.0
         }
         
-        let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(delta * Double(NSEC_PER_SEC)))
-        dispatch_after(dtime, dispatch_get_main_queue()) {
-            // тоже optional chaining но с проверкой наличия
+        let dtime = DispatchWallTime.now() + DispatchTimeInterval.seconds(Int(delta))
+        DispatchQueue.main.asyncAfter(wallDeadline: dtime, qos:.unspecified, flags: [], execute: {
             if let cb = self?.clockUpdate {
                 cb(true)
             }
-        }
+        })
+
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
+
 }

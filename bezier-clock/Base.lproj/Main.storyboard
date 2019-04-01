@@ -1,89 +1,119 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="bezier_clock" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRM-tE-KI1" customClass="DigitView" customModule="bezier_clock">
-                                <rect key="frame" x="44" y="85" width="70" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="-33" y="373" width="70" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="OrW-2Z-ZBQ"/>
                                     <constraint firstAttribute="width" constant="70" id="mfZ-ME-ZyU"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dku-L8-49H" customClass="DigitView" customModule="bezier_clock">
-                                <rect key="frame" x="114" y="85" width="70" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="37" y="373" width="70" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="omd-C0-Iej"/>
                                     <constraint firstAttribute="width" constant="70" id="rpj-ik-w7t"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5T-nh-uLb" customClass="DigitView" customModule="bezier_clock">
-                                <rect key="frame" x="214" y="85" width="70" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="137" y="373" width="70" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="72g-fB-0Kr"/>
                                     <constraint firstAttribute="width" constant="70" id="aiw-YD-rub"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETp-f0-yZ4" customClass="DigitView" customModule="bezier_clock">
-                                <rect key="frame" x="284" y="85" width="70" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="207" y="373" width="70" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="7h8-0h-KqK"/>
                                     <constraint firstAttribute="height" constant="150" id="cQo-Xn-lfr"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hY-M4-arx" customClass="DigitView" customModule="bezier_clock">
-                                <rect key="frame" x="384" y="85" width="70" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="307" y="373" width="70" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="BoC-3o-mDQ"/>
                                     <constraint firstAttribute="width" constant="70" id="bK3-Kk-tIK"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JlV-AF-heR" customClass="DigitView" customModule="bezier_clock">
-                                <rect key="frame" x="454" y="85" width="70" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="377" y="373" width="70" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Ado-87-6O9"/>
                                     <constraint firstAttribute="height" constant="150" id="R2b-nQ-CQc"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tag">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Dku-L8-49H" firstAttribute="leading" secondItem="gRM-tE-KI1" secondAttribute="trailing" id="4j6-pE-y4A"/>
                             <constraint firstItem="JlV-AF-heR" firstAttribute="leading" secondItem="4hY-M4-arx" secondAttribute="trailing" id="Arr-H9-3Ik"/>
                             <constraint firstItem="4hY-M4-arx" firstAttribute="leading" secondItem="ETp-f0-yZ4" secondAttribute="trailing" constant="30" id="Mib-cY-C4z"/>
                             <constraint firstItem="P5T-nh-uLb" firstAttribute="top" secondItem="ETp-f0-yZ4" secondAttribute="top" id="Ntc-7c-Bcm"/>
                             <constraint firstItem="P5T-nh-uLb" firstAttribute="leading" secondItem="Dku-L8-49H" secondAttribute="trailing" constant="30" id="VkI-ZB-ksq"/>
-                            <constraint firstAttribute="centerX" secondItem="P5T-nh-uLb" secondAttribute="trailing" id="Zea-XC-YIr"/>
+                            <constraint firstItem="P5T-nh-uLb" firstAttribute="trailing" secondItem="pUf-b9-Sr8" secondAttribute="centerX" id="Zea-XC-YIr"/>
                             <constraint firstItem="P5T-nh-uLb" firstAttribute="top" secondItem="JlV-AF-heR" secondAttribute="top" id="cnn-Lk-XsB"/>
                             <constraint firstItem="gRM-tE-KI1" firstAttribute="top" secondItem="P5T-nh-uLb" secondAttribute="top" id="lko-xx-9pd"/>
                             <constraint firstItem="ETp-f0-yZ4" firstAttribute="leading" secondItem="P5T-nh-uLb" secondAttribute="trailing" id="qXn-Ya-F39"/>
                             <constraint firstItem="P5T-nh-uLb" firstAttribute="top" secondItem="Dku-L8-49H" secondAttribute="top" id="rA7-8W-ZP4"/>
                             <constraint firstItem="P5T-nh-uLb" firstAttribute="top" secondItem="4hY-M4-arx" secondAttribute="top" id="vDg-cH-QRW"/>
-                            <constraint firstAttribute="centerY" secondItem="P5T-nh-uLb" secondAttribute="centerY" id="xGv-XL-JiS"/>
+                            <constraint firstItem="P5T-nh-uLb" firstAttribute="centerYWithinMargins" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="xGv-XL-JiS"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="pUf-b9-Sr8"/>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outletCollection property="digitViews" destination="gRM-tE-KI1" collectionClass="NSMutableArray" id="1FX-RJ-Eeu"/>
                         <outletCollection property="digitViews" destination="Dku-L8-49H" collectionClass="NSMutableArray" id="jm9-lr-5Lo"/>
@@ -97,9 +127,4 @@
             </objects>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
