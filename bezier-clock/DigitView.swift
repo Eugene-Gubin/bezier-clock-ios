@@ -88,8 +88,8 @@ public class DigitView: UIView {
         shapeLayer.fillColor   = UIColor.clear.cgColor;
         shapeLayer.strokeColor = UIColor.black.cgColor;
         shapeLayer.lineWidth   = 2.0;
-        shapeLayer.lineCap     = kCALineCapRound;
-        shapeLayer.lineJoin    = kCALineCapRound;
+        shapeLayer.lineCap     = CAShapeLayerLineCap.round;
+        shapeLayer.lineJoin    = CAShapeLayerLineJoin.round;
         
         setupPathWithDigit(digit: digit, animated: false)
     }
@@ -131,7 +131,7 @@ public class DigitView: UIView {
             let animation = CABasicAnimation(keyPath: "path")
             
             animation.duration       = DigitView.animationDuration
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
             animation.fromValue      = shapeLayer.value(forKeyPath: animation.keyPath!)
             animation.toValue        = path.cgPath
             
